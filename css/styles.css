@@ -1,0 +1,102 @@
+body{
+	background: url(../img/bg.png) repeat;
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+	font-family: Lato, sans-serif;
+}
+
+
+img {
+	margin: 10px auto;
+	width: 2%;
+	height: 2%;
+	display: block;
+}
+
+h1 {
+	margin-top: 1px;
+	text-align: center;
+	color: green;
+	font-size: 1.5em;
+}
+
+#main {
+	margin: 40px auto;
+	background: lightblue;
+	width: 50%;
+	height: 350px;
+	padding-top: 30px;
+	border: 5px dashed green;
+	position: relative;
+	text-align: center;
+}
+
+.bar {
+	height: 60px;
+	border-radius: 5px;
+}
+
+#hot {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#D03511, #EA0F0F);
+}
+
+#cold {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#1611D0, #0D0A99);
+}
+
+#number_form {
+	text-align: center;
+	margin: 57px 25% 20px 25%;
+	padding: 2% 0;
+	width: 50%;
+	background: rgba(255,255,255, .3);
+	opacity: .4;
+}
+
+.buttons {
+	padding: 3% 7%;
+	border-radius: 100%;
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+.buttons:hover {
+	color: green;
+	font-size: 1.2em;
+	/*****perform transition here*******/
+}
+
+#guess {
+	background: blue;
+}
+
+#refresh {
+	background: red;
+}
+
+#result p {
+	color: #fff;
+	margin: 5px 0;
+}
+
+#result p:last-child {
+	font-size: 1.5em;
+	color: green;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	height: 5%;
+	background: green;
+	width: 100%;
+	line-height: 37px;
+	text-align: center;
+}
