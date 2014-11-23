@@ -1,9 +1,16 @@
+
 var computerChoice = Math.floor(Math.random() * 100);
 console.log(computerChoice);
-var userChoice = prompt("Guess a whole number between 0 and 100");
-var totalGuess = 1;
+var userChoice;
 
-alert("Getting Hotter");
+var userGuess = function () {
+	userChoice = prompt("Guess A whole number between 0 and 100");
+}
+
+userGuess();
+alert("Started HOTTTT")
+
+var totalGuess = 1;
 
 while(userChoice != computerChoice) {
 	var previousChoice = userChoice;
@@ -44,14 +51,64 @@ while(userChoice != computerChoice) {
 
 }
 
-alert("Congratulations, you got the number");
+alert("Congratulations! You got the answer in: " + totalGuess +" guesses!");	
 
-if(totalGuess === 1){
-	alert("You got the number in one guess! Bravo");
+
+
+
+// Add Interactivity
+var guessInput = document.getElementById("numberForm");
+var guessButton = document.getElementById("guess");
+var refreshButton = document.getElementById("refresh");
+var lastGuessHolder = document.getElementById("totalGuess");
+var totalGuessHolder = document.getElementById("lastGuess");
+var scoreHolder = document.getElementById("score");
+
+///
+
+var submitGuess = function() {
+	console.log("Submit Guess");
+	alert("SURE!!!!!")
+
+	//Submit Guess
+	//when button is pressed, let userChoice be submitted
+	// submit input from input (number)
 }
-else {
-	alert("You got the answer in: " + totalGuess +" guesses!");	
+
+guessButton.onclick = submitGuess;
+//Restart game
+var refreshGuess = function(){
+	console.log("Refresh Game");
+	// Refresh computerChoice	
+	// Refresh totalGuess
+	//Refresh previousGuess
+
 }
 
 
-// var checkGuess = function(userChoice) 
+//Display Guess
+var displayPreviousGuess = function() {
+	console.log("previous Guess");
+	//The previousGuess from the input should be displayed
+}
+
+var displayTotalGuess = function() {
+	console.log("Total Guess");
+	//The totalGuess from the input should be displayed
+}
+
+
+//Display Score
+var displayScore = function() {
+	//The total score should be displayed
+	console.log("Score");
+}
+
+
+
+
+
+
+
+
+

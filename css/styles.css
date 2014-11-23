@@ -51,7 +51,7 @@ h1 {
 	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#1611D0, #0D0A99);
 }
 
-#number_form {
+#numberForm {
 	text-align: center;
 	margin: 57px 25% 20px 25%;
 	padding: 2% 0;
