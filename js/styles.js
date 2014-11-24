@@ -16,7 +16,7 @@ var hotter = document.getElementById("hot");
 var colder = document.getElementById("cold");
 
 /***************************************************************************
-
+ 
 							GAME LOGIC 
 
 ***************************************************************************/
@@ -47,8 +47,9 @@ var startGame = function() {
 		if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
 			feed.style.backgroundColor="red";
 			feed.innerHTML="Getting Hotter";
+			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
+			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
-			hotter.style.width = "10%";
 			console.log("Getting Hotter");
 			console.log(previousChoice);
 			
@@ -56,6 +57,8 @@ var startGame = function() {
 		else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
 			feed.style.backgroundColor="blue";
 			feed.innerHTML="Getting Colder";
+			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
+			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
 			console.log("Getting Colder");
 			console.log(previousChoice);
@@ -64,6 +67,8 @@ var startGame = function() {
 		else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
 			feed.style.backgroundColor="blue";
 			feed.innerHTML="Getting Colder";
+			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
+			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
 			console.log("Getting Colder");
 			console.log(previousChoice);
@@ -72,6 +77,8 @@ var startGame = function() {
 		else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
 			feed.style.backgroundColor="red";
 			feed.innerHTML="Getting Hotter";
+			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
+			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
 			console.log("Getting Hotter");
 			console.log(previousChoice);
@@ -89,6 +96,8 @@ var startGame = function() {
 		else if(userChoice == computerChoice){
 			feed.style.backgroundColor="green";
 			feed.style.fontSize = "1em";
+			document.getElementById("hot").style.width = 100 + "%";
+			document.getElementById("cold").style.width = 0;
 			guessInput.value = " ";
 			feed.innerHTML="Congratulations! You got the answer in: " + totalGuess +" guesses!";	
 		}

@@ -47,6 +47,7 @@ h1 {
 	-o-animation-name: slide-hot;
 	animation-name: slide-hot;
   	-webkit-animation-duration: 2s;
+  	-webkit-transition: 2s;
 
 }
 
@@ -60,6 +61,7 @@ h1 {
 	-o-animation-name: slide-cold;
 	animation-name: slide-cold;
   	-webkit-animation-duration: 2s;
+  	-webkit-transition: 2s;
 
 }
 
