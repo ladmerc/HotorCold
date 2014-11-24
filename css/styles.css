@@ -40,8 +40,14 @@ h1 {
 #hot {
 	position: absolute;
 	top: 0;
-	width: 100%;
+	width: 0%; /*changed*/
 	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#D03511, #EA0F0F);
+  	-webkit-animation-name: slide-hot;
+  	-moz-animation-name: slide-hot;
+	-o-animation-name: slide-hot;
+	animation-name: slide-hot;
+  	-webkit-animation-duration: 2s;
+
 }
 
 #cold {
@@ -49,6 +55,12 @@ h1 {
 	bottom: 0;
 	width: 100%;
 	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#1611D0, #0D0A99);
+	-webkit-animation-name: slide-cold;
+	-moz-animation-name: slide-cold;
+	-o-animation-name: slide-cold;
+	animation-name: slide-cold;
+  	-webkit-animation-duration: 2s;
+
 }
 
 #numberForm {
@@ -105,4 +117,56 @@ footer {
 	width: 100%;
 	line-height: 37px;
 	text-align: center;
+}
+
+
+
+/*********  Keyframes
+**********************************************/
+
+/**********************************************
+	HOT BAR
+**********************************************/
+
+@-webkit-keyframes slide-hot {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+
+@-moz-keyframes slide-hot {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+
+@-o-keyframes slide-hot {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+
+@keyframes slide-hot {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+/**********************************************
+	COLD BAR
+**********************************************/
+
+@-webkit-keyframes slide-cold {
+	0% {width: 100%;  }
+	100%   {width: 0%;  }
+}
+
+@-moz-keyframes slide-cold {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+
+@-o-keyframes slide-cold {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
+}
+
+@keyframes slide-cold {
+	0% {width: 0%;  }
+	100%   {width: 100%;  }
 }

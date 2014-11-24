@@ -12,6 +12,8 @@ var lastGuessHolder = document.getElementById("totalGuess");
 var totalGuessHolder = document.getElementById("lastGuess");
 var scoreHolder = document.getElementById("score");
 var feed = document.getElementById("feedback");
+var hotter = document.getElementById("hot");
+var colder = document.getElementById("cold");
 
 /***************************************************************************
 
@@ -26,7 +28,6 @@ var previousChoice = null;
 
 var totalGuess = 1; //Initialises the totalGuess counter to 0
 
-
 /****************************************************
 THIS FUNCTION RUNS WHEN THE "GUESS" BUTTON IS PRESSED
 ******************************************************/
@@ -34,54 +35,69 @@ THIS FUNCTION RUNS WHEN THE "GUESS" BUTTON IS PRESSED
 var startGame = function() {
 	var userChoice = guessInput.value;
 	
-	console.log(previousChoice);
-	
-	if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
-		feed.style.backgroundColor="red";
-		feed.innerHTML="Getting Hotter";
-		console.log("Getting Hotter");
-		console.log(previousChoice);
-		
-	}
-	else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
-		feed.style.backgroundColor="blue";
-		feed.innerHTML="Getting Colder";
-		console.log("Getting Colder");
-		console.log(previousChoice);
-	
-	}
-	else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
-		feed.style.backgroundColor="blue";
-		feed.innerHTML="Getting Colder";
-		console.log("Getting Colder");
-		console.log(previousChoice);
-		
-	}
-	else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
-		feed.style.backgroundColor="red";
-		feed.innerHTML="Getting Hotter";
-		console.log("Getting Hotter");
-		console.log(previousChoice);
-		
-	}
-	else if(userChoice == previousChoice) {
-		feed.style.backgroundColor="black";
-		feed.innerHTML="Neither Hotter nor Colder";
-		console.log("Neither Hotter nor Colder");
-		console.log(previousChoice);
-	
+	if ((typeof userChoice !== typeof 1) && (userChoice < 1 || userChoice > 99)) {
+		feed.innerHTML="Input must be a number between 1 and 100";
+		feed.style.color="green";
+		guessInput.value = " ";
 	}
 
-	else if(userChoice == computerChoice){
-		feed.style.backgroundColor="green";
-		feed.style.fontSize = "1em";
-		feed.innerHTML="Congratulations! You got the answer in: " + totalGuess +" guesses!";	
-}
+	else {
+		console.log(previousChoice);
+		
+		if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
+			feed.style.backgroundColor="red";
+			feed.innerHTML="Getting Hotter";
+			guessInput.value = " ";
+			hotter.style.width = "10%";
+			console.log("Getting Hotter");
+			console.log(previousChoice);
+			
+		}
+		else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
+			feed.style.backgroundColor="blue";
+			feed.innerHTML="Getting Colder";
+			guessInput.value = " ";
+			console.log("Getting Colder");
+			console.log(previousChoice);
+		
+		}
+		else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
+			feed.style.backgroundColor="blue";
+			feed.innerHTML="Getting Colder";
+			guessInput.value = " ";
+			console.log("Getting Colder");
+			console.log(previousChoice);
+			
+		}
+		else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
+			feed.style.backgroundColor="red";
+			feed.innerHTML="Getting Hotter";
+			guessInput.value = " ";
+			console.log("Getting Hotter");
+			console.log(previousChoice);
+			
+		}
+		else if(userChoice == previousChoice) {
+			feed.style.backgroundColor="black";
+			feed.innerHTML="Neither Hotter nor Colder";
+			guessInput.value = " ";
+			console.log("Neither Hotter nor Colder");
+			console.log(previousChoice);
+		
+		}
 
-	previousChoice = userChoice; //after every guess, the chosen number is passed into the "PreviousChoice" variable;
-	totalGuess++;
+		else if(userChoice == computerChoice){
+			feed.style.backgroundColor="green";
+			feed.style.fontSize = "1em";
+			guessInput.value = " ";
+			feed.innerHTML="Congratulations! You got the answer in: " + totalGuess +" guesses!";	
+		}
 
-	return false;
+		previousChoice = userChoice; //after every guess, the chosen number is passed into the "PreviousChoice" variable;
+		totalGuess++;
+
+		}
+
 };
 
 /**********************************************************************************
@@ -99,12 +115,19 @@ var refreshGame = function() {
 	feed.innerHTML=" "
 	console.log(computerChoice);
 
-	return false;
 }
 
 
 guessButton.addEventListener("click", startGame); // call the "Guess Button" to start the game;
-// guessInput.addEventListener("keypress", startGame);
+
+//Stop Form Submission on Enter Key Press
+guessInput.addEventListener("keypress", function (e) {
+            
+            if (e.which == 13) {
+                startGame();
+                e.preventDefault();
+             }
+             }); 
 
 refreshButton.addEventListener("click", refreshGame); // call the "Refresh Button" to start the game;
 
