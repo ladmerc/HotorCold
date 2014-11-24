@@ -81,6 +81,12 @@ h1 {
 	background: red;
 }
 
+#feedback {
+	font-size: 1.7em;
+	color: white;
+	margin-bottom: 25px;
+}
+
 #result p {
 	color: #fff;
 	margin: 5px 0;

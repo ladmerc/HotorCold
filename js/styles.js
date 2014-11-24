@@ -1,108 +1,118 @@
+/***************************************************************************
 
-var computerChoice = Math.floor(Math.random() * 100);
-console.log(computerChoice);
-var userChoice;
+BINDING ALL THE NECESSARY HTML ELEMENTS TO JAVASCRIPT
 
-var userGuess = function () {
-	userChoice = prompt("Guess A whole number between 0 and 100");
-}
-
-userGuess();
-alert("Started HOTTTT")
-
-var totalGuess = 1;
-
-while(userChoice != computerChoice) {
-	var previousChoice = userChoice;
-	
-	userChoice = prompt("Guess a whole number between 0 and 100");
-	if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
-		alert("Getting Hotter");
-		console.log("Getting Hotter");
-		console.log(previousChoice);
-		
-	}
-	else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
-		alert("Getting Colder");
-		console.log("Getting Colder");
-		console.log(previousChoice);
-	
-	}
-	else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
-		alert("Getting Colder");
-		console.log("Getting Colder");
-		console.log(previousChoice);
-		
-	}
-	else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
-		alert("Getting Hotter");
-		console.log("Getting Hotter");
-		console.log(previousChoice);
-		
-	}
-	else if(userChoice == previousChoice) {
-		alert("Neither Hotter nor Colder");
-		console.log("Neither Hotter nor Colder");
-		console.log(previousChoice);
-	
-	}
-	
-	totalGuess++;
-
-}
-
-alert("Congratulations! You got the answer in: " + totalGuess +" guesses!");	
+***************************************************************************/
 
 
-
-
-// Add Interactivity
 var guessInput = document.getElementById("numberForm");
 var guessButton = document.getElementById("guess");
 var refreshButton = document.getElementById("refresh");
 var lastGuessHolder = document.getElementById("totalGuess");
 var totalGuessHolder = document.getElementById("lastGuess");
 var scoreHolder = document.getElementById("score");
+var feed = document.getElementById("feedback");
 
-///
+/***************************************************************************
 
-var submitGuess = function() {
-	console.log("Submit Guess");
-	alert("SURE!!!!!")
+							GAME LOGIC 
 
-	//Submit Guess
-	//when button is pressed, let userChoice be submitted
-	// submit input from input (number)
+***************************************************************************/
+
+var computerChoice = Math.floor(Math.random() * 100);
+console.log(computerChoice);
+
+var previousChoice = null;
+
+var totalGuess = 1; //Initialises the totalGuess counter to 0
+
+
+/****************************************************
+THIS FUNCTION RUNS WHEN THE "GUESS" BUTTON IS PRESSED
+******************************************************/
+
+var startGame = function() {
+	var userChoice = guessInput.value;
+	
+	console.log(previousChoice);
+	
+	if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
+		feed.style.backgroundColor="red";
+		feed.innerHTML="Getting Hotter";
+		console.log("Getting Hotter");
+		console.log(previousChoice);
+		
+	}
+	else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
+		feed.style.backgroundColor="blue";
+		feed.innerHTML="Getting Colder";
+		console.log("Getting Colder");
+		console.log(previousChoice);
+	
+	}
+	else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
+		feed.style.backgroundColor="blue";
+		feed.innerHTML="Getting Colder";
+		console.log("Getting Colder");
+		console.log(previousChoice);
+		
+	}
+	else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
+		feed.style.backgroundColor="red";
+		feed.innerHTML="Getting Hotter";
+		console.log("Getting Hotter");
+		console.log(previousChoice);
+		
+	}
+	else if(userChoice == previousChoice) {
+		feed.style.backgroundColor="black";
+		feed.innerHTML="Neither Hotter nor Colder";
+		console.log("Neither Hotter nor Colder");
+		console.log(previousChoice);
+	
+	}
+
+	else if(userChoice == computerChoice){
+		feed.style.backgroundColor="green";
+		feed.style.fontSize = "1em";
+		feed.innerHTML="Congratulations! You got the answer in: " + totalGuess +" guesses!";	
 }
 
-guessButton.onclick = submitGuess;
-//Restart game
-var refreshGuess = function(){
-	console.log("Refresh Game");
-	// Refresh computerChoice	
-	// Refresh totalGuess
-	//Refresh previousGuess
+	previousChoice = userChoice; //after every guess, the chosen number is passed into the "PreviousChoice" variable;
+	totalGuess++;
 
+	return false;
+};
+
+/**********************************************************************************
+
+			THIS FUNCTION REFRESHES THE COMPUTER'S CHOICE, TOTAL GUESS AND PREVIOUS GUESS
+
+***********************************************************************************/
+
+var refreshGame = function() {
+	confirm("Refreshing Game changes the Computer's Number? Confirm Refresh?");// Try to make an if statement that checks if the user clicks cancel
+	computerChoice = Math.floor(Math.random() * 100);
+	previousChoice = null;
+	totalGuess = 0;
+	feed.style.backgroundColor="lightblue";
+	feed.innerHTML=" "
+	console.log(computerChoice);
+
+	return false;
 }
 
 
-//Display Guess
-var displayPreviousGuess = function() {
-	console.log("previous Guess");
-	//The previousGuess from the input should be displayed
-}
+guessButton.addEventListener("click", startGame); // call the "Guess Button" to start the game;
+// guessInput.addEventListener("keypress", startGame);
 
-var displayTotalGuess = function() {
-	console.log("Total Guess");
-	//The totalGuess from the input should be displayed
-}
+refreshButton.addEventListener("click", refreshGame); // call the "Refresh Button" to start the game;
 
 
-//Display Score
-var displayScore = function() {
-	//The total score should be displayed
-	console.log("Score");
-}
+// //Display Score
+// var displayScore = function() {
+// 	//The total score should be displayed
+// }
 
 
 
