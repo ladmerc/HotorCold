@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<title>HotorCold</title>
+	<link type="text/css" href="css/reset.css" rel="stylesheet"> 
+	<link type="text/css" href="css/styles.css" rel="stylesheet"> 
+	<!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+	<link type="favicon.png" href="img/andela_icon.png">
+	<link rel="icon" type="image/png" href="img/andela_icon.png" />
+</head>
+
+<body>
+	<img src="img/m.jpg" alt="logo">
+
+	<h3>Welcome! I have thought of a whole number between 0 and 100. Try to guess the number. If you're closer to the number I've guessed, you're hotter! Otherwise, you're colder! Game On</h3>
+
+	<div id="main">
+		<div class="bar" id="hot"></div>
+
+		<form>
+		<input name="field" type="number" name="choice" min="0" max="100" value="Enter Guess"  id="numberForm"></input>
+		<p>
+			<input type="button" value="Guess" name="trya" class="buttons" id="guess"></input>
+			<input type="button" value="Refresh" class="buttons" id="refresh"></input>	
+		</p>
+		</form>
+
+		<p id="feedback"></p>
+
+		<div id="result">
+
+			<p>Your Score is: <span id="score"></span></p>
+		</div>
+
+		<div class="bar" id="cold"></div>
+	</div>
+
+
+	<script type="text/javascript" src="js/styles.js"></script>
+
+
+</body>
