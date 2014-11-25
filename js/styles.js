@@ -24,7 +24,7 @@ var colder = document.getElementById("cold");
 var computerChoice = Math.floor(Math.random() * 100);
 console.log(computerChoice);
 
-var previousChoice = null;
+var previousChoice = 0;
 
 var totalGuess = 1; //Initialises the totalGuess counter to 0
 
@@ -35,18 +35,29 @@ THIS FUNCTION RUNS WHEN THE "GUESS" BUTTON IS PRESSED
 var startGame = function() {
 	var userChoice = guessInput.value;
 	
-	if ((typeof userChoice !== typeof 1) && (userChoice < 1 || userChoice > 99)) {
+	if ((typeof userChoice !== typeof 1) && (userChoice < 1 || userChoice > 100)) {
 		feed.innerHTML="Input must be a number between 1 and 100";
-		feed.style.color="green";
+		feed.style.color=" ";
 		guessInput.value = " ";
 	}
 
 	else {
 		console.log(previousChoice);
+
+		if(userChoice == computerChoice){
+			feed.style.backgroundColor="green";
+			feed.style.fontSize = "1em";
+			document.getElementById("hot").style.width = 100 + "%";
+			document.getElementById("cold").style.width = 0;
+			guessInput.value = " ";
+			feed.innerHTML="Congratulations! You got the answer in " + totalGuess +" guess(es)!";	
+			var score = Math.floor((1/totalGuess) * 1000); 
+			scoreHolder.innerHTML = score;
+		}
 		
-		if((userChoice >  computerChoice) && (userChoice < previousChoice)) {
-			feed.style.backgroundColor="red";
-			feed.innerHTML="Getting Hotter";
+		else if(Math.abs(computerChoice - userChoice) > Math.abs(computerChoice - previousChoice)) {
+			feed.style.backgroundColor="blue";
+			feed.innerHTML="Getting Colder";
 			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
 			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
@@ -54,37 +65,17 @@ var startGame = function() {
 			console.log(previousChoice);
 			
 		}
-		else if((userChoice > computerChoice) && (userChoice > previousChoice)) {
-			feed.style.backgroundColor="blue";
-			feed.innerHTML="Getting Colder";
-			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
-			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
-			guessInput.value = " ";
-			console.log("Getting Colder");
-			console.log(previousChoice);
-		
-		}
-		else if((userChoice < computerChoice) && (userChoice < previousChoice)) {
-			feed.style.backgroundColor="blue";
-			feed.innerHTML="Getting Colder";
-			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
-			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
-			guessInput.value = " ";
-			console.log("Getting Colder");
-			console.log(previousChoice);
-			
-		}
-		else if((userChoice < computerChoice) && (userChoice > previousChoice)) {
+
+		else if(Math.abs(computerChoice - userChoice) < Math.abs(computerChoice - previousChoice)) {
 			feed.style.backgroundColor="red";
 			feed.innerHTML="Getting Hotter";
-			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
 			document.getElementById("cold").style.width = (0 + Math.abs(userChoice - computerChoice)) + "%";
+			document.getElementById("hot").style.width = (100 - Math.abs(userChoice - computerChoice)) + "%";
 			guessInput.value = " ";
-			console.log("Getting Hotter");
+			console.log("Getting Colder");
 			console.log(previousChoice);
-			
 		}
-		else if(userChoice == previousChoice) {
+		else if(Math.abs(computerChoice - userChoice) == Math.abs(computerChoice - previousChoice)) {
 			feed.style.backgroundColor="black";
 			feed.innerHTML="Neither Hotter nor Colder";
 			guessInput.value = " ";
@@ -93,14 +84,7 @@ var startGame = function() {
 		
 		}
 
-		else if(userChoice == computerChoice){
-			feed.style.backgroundColor="green";
-			feed.style.fontSize = "1em";
-			document.getElementById("hot").style.width = 100 + "%";
-			document.getElementById("cold").style.width = 0;
-			guessInput.value = " ";
-			feed.innerHTML="Congratulations! You got the answer in: " + totalGuess +" guesses!";	
-		}
+		
 
 		previousChoice = userChoice; //after every guess, the chosen number is passed into the "PreviousChoice" variable;
 		totalGuess++;
@@ -118,10 +102,11 @@ var startGame = function() {
 var refreshGame = function() {
 	confirm("Refreshing Game changes the Computer's Number? Confirm Refresh?");// Try to make an if statement that checks if the user clicks cancel
 	computerChoice = Math.floor(Math.random() * 100);
-	previousChoice = null;
-	totalGuess = 0;
+	previousChoice = 0;
+	totalGuess = 1;
 	feed.style.backgroundColor="lightblue";
-	feed.innerHTML=" "
+	feed.innerHTML=" ";
+	scoreHolder.innerHTML = " ";
 	console.log(computerChoice);
 
 }
@@ -139,6 +124,7 @@ guessInput.addEventListener("keypress", function (e) {
              }); 
 
 refreshButton.addEventListener("click", refreshGame); // call the "Refresh Button" to start the game;
+
 
 
 // //Display Score
