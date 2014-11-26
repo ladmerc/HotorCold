@@ -8,8 +8,7 @@ BINDING ALL THE NECESSARY HTML ELEMENTS TO JAVASCRIPT
 var guessInput = document.getElementById("numberForm");
 var guessButton = document.getElementById("guess");
 var refreshButton = document.getElementById("refresh");
-var lastGuessHolder = document.getElementById("totalGuess");
-var totalGuessHolder = document.getElementById("lastGuess");
+var lastGuessHolder = document.getElementById("lastGuess");
 var scoreHolder = document.getElementById("score");
 var feed = document.getElementById("feedback");
 var hotter = document.getElementById("hot");
@@ -21,7 +20,7 @@ var colder = document.getElementById("cold");
 
 ***************************************************************************/
 
-var computerChoice = Math.floor(Math.random() * 100);
+var computerChoice = Math.floor((Math.random() * 100) + 1);
 console.log(computerChoice);
 
 var previousChoice = 0;
@@ -52,7 +51,7 @@ var startGame = function() {
 			guessInput.value = " ";
 			feed.innerHTML="Congratulations! You got the answer in " + totalGuess +" guess(es)!";	
 			var score = Math.floor((1/totalGuess) * 1000); 
-			scoreHolder.innerHTML = score;
+			scoreHolder.innerHTML = "Your score is " + score;
 		}
 		
 		else if(Math.abs(computerChoice - userChoice) > Math.abs(computerChoice - previousChoice)) {
@@ -87,6 +86,7 @@ var startGame = function() {
 		
 
 		previousChoice = userChoice; //after every guess, the chosen number is passed into the "PreviousChoice" variable;
+		lastGuessHolder.innerHTML = "Last Guess: " + (previousChoice);
 		totalGuess++;
 
 		}
@@ -107,7 +107,10 @@ var refreshGame = function() {
 	feed.style.backgroundColor="lightblue";
 	feed.innerHTML=" ";
 	scoreHolder.innerHTML = " ";
+	document.getElementById("cold").style.width = 100 + "%";
+	document.getElementById("hot").style.width = 0;
 	console.log(computerChoice);
+	lastGuessHolder.innerHTML = "";
 
 }
 

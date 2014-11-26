@@ -18,7 +18,7 @@
 		this.previousChoice = 0;
 		this.totalGuesses = 1;
 		this.computerChoice = Math.floor(Math.random() * 100);
-		this.displayComp();
+		this.displayComp();gu
 
 	},
 

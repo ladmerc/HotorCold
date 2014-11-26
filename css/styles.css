@@ -46,8 +46,8 @@ h3 {
   	-moz-animation-name: slide-hot;
 	-o-animation-name: slide-hot;
 	animation-name: slide-hot;
-  	-webkit-animation-duration: 2s;
-  	-webkit-transition: 2s;
+  	-webkit-animation-duration: .7s;
+  	-webkit-transition: .7s;
 
 }
 
@@ -60,8 +60,8 @@ h3 {
 	-moz-animation-name: slide-cold;
 	-o-animation-name: slide-cold;
 	animation-name: slide-cold;
-  	-webkit-animation-duration: 2s;
-  	-webkit-transition: 2s;
+  	-webkit-animation-duration: .7s;
+  	-webkit-transition: .7s;
 
 }
 
@@ -104,24 +104,15 @@ h3 {
 #result p {
 	color: #fff;
 	margin: 5px 0;
-}
-
-#result p:last-child {
 	font-size: 1.5em;
 	color: green;
 }
 
-footer {
-	position: fixed;
-	bottom: 0;
-	height: 5%;
-	background: green;
-	width: 100%;
-	line-height: 37px;
+#lastGuess {
 	text-align: center;
+	color: navy;
+
 }
-
-
 
 /*********  Keyframes
 **********************************************/
